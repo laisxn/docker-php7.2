@@ -16,5 +16,5 @@ RUN pecl install redis-4.0.1 \
         && pecl install memcached \
         && docker-php-ext-enable redis xdebug swoole mongodb memcached
 
-EXPOSE 9000 9501
+EXPOSE 80 9000
 CMD ["php-fpm"]
