@@ -5,6 +5,8 @@ RUN apt-get update && apt-get install -y \
                 libjpeg62-turbo-dev \
                 libpng-dev \
                 libmemcached-dev zlib1g-dev \
+                libmagickwand-dev \
+                libmagickcore-dev \
         && docker-php-ext-install -j$(nproc) iconv \
         && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
         && docker-php-ext-install -j$(nproc) gd\
@@ -14,7 +16,8 @@ RUN pecl install redis-4.0.1 \
         && pecl install swoole \
         && pecl install mongodb \
         && pecl install memcached \
-        && docker-php-ext-enable redis xdebug swoole mongodb memcached
+        && pecl install imagick \
+        && docker-php-ext-enable redis xdebug swoole mongodb memcached imagick opcache
 
 EXPOSE 80 9000
 CMD ["php-fpm"]
