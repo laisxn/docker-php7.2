@@ -22,7 +22,7 @@ RUN pecl install redis-4.0.1 \
 	&& pecl install imagick \
 	&& docker-php-ext-enable redis xdebug swoole mongodb memcached imagick opcache
 	
-RUN rm -r /var/lib/apt/lists/* && \
+RUN rm -r /var/lib/apt/lists/*
 
 # 安装composer并允许root用户运行
 ENV COMPOSER_ALLOW_SUPERUSER=1
