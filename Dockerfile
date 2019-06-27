@@ -21,6 +21,16 @@ RUN pecl install redis-4.0.1 \
 	&& pecl install memcached \
 	&& pecl install imagick \
 	&& docker-php-ext-enable redis xdebug swoole mongodb memcached imagick opcache
+
+#添加phalcon7
+RUN apt-get update && apt-get install -y --no-install-recommends \
+	&& git clone --depth=1 git://github.com/dreamsxin/cphalcon7.git \
+	&& cd cphalcon7/ext \
+	&& phpize \
+	&& ./configure \
+	&& make && make install \
+	&& rm -rf ./cphalcon7
+	&& docker-php-ext-enable phalcon 
 	
 RUN rm -r /var/lib/apt/lists/*
 
