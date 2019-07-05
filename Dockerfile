@@ -43,7 +43,7 @@ RUN mkdir -p /usr/local/share/composer \
         && php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer --snapshot \
         && rm -f /tmp/composer-setup.* \
         # 配置composer中国全量镜像
-        && composer config -g repo.packagist composer https://packagist.laravel-china.org
+        && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
         
 EXPOSE 9000 
 CMD ["php-fpm"]
